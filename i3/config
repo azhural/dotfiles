@@ -180,6 +180,11 @@ bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
 
+# screenshot
+bindsym --release Print exec "scrot '%F-%H-%M-%S_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots'"
+bindsym --release $mod+Print exec "scrot '%F-%H-%M-%S_$wx$h_window.png' -u -e 'mv $f ~/Pictures/Screenshots'"
+bindsym --release $mod+Shift+Print exec "scrot '%F-%H-%M-%S_$wx$h_rect.png' -s -e 'mv $f ~/Pictures/Screenshots'"
+
 set $bg-color               #2f343f
 set $inactive-bg-color      #2f343f
 set $text-color             #f3f4f5
