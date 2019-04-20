@@ -89,14 +89,21 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+# cycle workspaces
+bindsym $mod+period workspace next
+bindsym $mod+comma workspace prev
+
 # focus the child container
 #bindsym $mod+d focus child
 
 set $workspace1 "1: >_"
 set $workspace2 "2: Firefox"
 set $workspace3 "3: &lt;/>"
+set $workspace4 "4"
 set $workspace5 "5: RViz"
 set $workspace6 "6: Gazebo"
+set $workspace7 "7"
+set $workspace8 "8: Games"
 set $workspace9 "9: Thunderbird"
 set $workspace10 "10: Music"
 
@@ -104,11 +111,11 @@ set $workspace10 "10: Music"
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
-bindsym $mod+4 workspace 4
+bindsym $mod+4 workspace $workspace4
 bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace $workspace6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
@@ -120,7 +127,7 @@ bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace $workspace5
 bindsym $mod+Shift+6 move container to workspace $workspace6
 bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
@@ -130,6 +137,9 @@ assign [class="MonoDevelop"] $workspace3
 assign [class="Code"] $workspace3
 assign [class="rviz"] $workspace5
 assign [class="Gazeb"] $workspace6
+assign [class="Minecraft 1.13.1"] $workspace8
+assign [class="Minecraft 1.12.2"] $workspace8
+assign [class="Minecraft 1.7.10"] $workspace8
 assign [class="Thunderbird"] $workspace9
 for_window [class="Spotify"] move to workspace $workspace10
 
@@ -174,9 +184,10 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+y exec "i3lock -d -I 5 -i ~/Pictures/Wallpapers/alena-aenami-quiet-1px.png -u -t -e"
 
 # sound
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
-bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+# try bluetooth sink first, otherwise use on board sound
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 1 +5% || pactl set-sink-volume 0 +5%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 1 -5% || pactl set-sink-volume 0 -5%"
+bindsym XF86AudioMute exec "pactl set-sink-mute 1 toggle || pactl set-sink-mute 0 toggle"
 
 # screen brightness
 bindsym XF86MonBrightnessUp exec light -A 5
@@ -219,3 +230,6 @@ bar {
             urgent_workspace    $urgent-bg-color    $urgent-bg-color    $text-color
         }
 }       
+focus_follows_mouse no
+exec syndaemon -i .3 -d -t -K
+exec_always feh --bg-fill ~/Pictures/Wallpapers/alena-aenami-quiet-1px.png
