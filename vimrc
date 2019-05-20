@@ -30,9 +30,13 @@ set showmatch
 
 " Mappings
 nnoremap <C-L> :nohl<CR><C-L>
+"gobby
+vnoremap <C-g> :w !xclip -i -sel c<CR><CR>
+"baste
+noremap <C-b> :r !xclip -o -sel c<CR><CR>
 
 " Plugins 
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 
 Plug 'rust-lang/rust.vim'
 
