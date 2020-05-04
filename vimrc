@@ -25,6 +25,7 @@ set background=dark
 
 set shiftwidth=2
 set tabstop=2
+set softtabstop=2
 set expandtab
 set showmatch
 
@@ -34,6 +35,8 @@ nnoremap <C-L> :nohl<CR><C-L>
 vnoremap <C-g> :w !xclip -i -sel c<CR><CR>
 "baste
 noremap <C-b> :r !xclip -o -sel c<CR><CR>
+
+map <F4> :!wc -m %
 
 " Plugins 
 call plug#begin('~/.vim/plugged')
