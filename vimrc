@@ -38,6 +38,8 @@ noremap <C-b> :r !xclip -o -sel c<CR><CR>
 
 map <F4> :!wc -m %
 
+autocmd FileType c,cpp,h,hpp,py,tex autocmd BufWritePre <buffer> %s/\s\+$//e
+
 " Plugins 
 call plug#begin('~/.vim/plugged')
 
