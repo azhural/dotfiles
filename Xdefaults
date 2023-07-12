@@ -1,6 +1,8 @@
 URxvt*font:        xft:DejaVuSansMono:size=10
 URxvt*scrollBar:   false
-URxvt.perl-ext-common: tabbed
+URxvt*perl-ext-common: tabbed
+URxvt*perl-lib: /home/pc/.urxvt/ext
+URxvt*perl-ext: resize-font
 
 ! URxvt.transparent: true
 ! URxvt.shading: 60
