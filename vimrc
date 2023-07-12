@@ -42,10 +42,11 @@ autocmd FileType c,cpp,h,hpp,py,tex autocmd BufWritePre <buffer> %s/\s\+$//e
 
 " Plugins 
 call plug#begin('~/.vim/plugged')
-
-Plug 'rust-lang/rust.vim'
-
+"
+"Plug 'rust-lang/rust.vim'
+Plug 'davidhalter/jedi-vim'
+"
 call plug#end()
-
-" rust.vim
-let g:rustfmt_autosave = 1
+"
+"" rust.vim
+"let g:rustfmt_autosave = 1
